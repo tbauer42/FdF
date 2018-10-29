@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/21 17:35:26 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/26 15:35:50 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/29 19:23:29 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	longueur_line(t_img *env)
 			i++;
 		if (i != env->nb_x)
 			exit(1);
+		i = -1;
+		while(tab[++i])
+			free(tab[i]);
+		free(tab);
+		free(line);
 	}
 	close(fd);
 }

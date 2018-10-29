@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vklaouse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/15 18:59:49 by vklaouse          #+#    #+#             */
-/*   Updated: 2018/10/21 15:42:35 by tbauer           ###   ########.fr       */
+/*   Created: 2018/09/30 18:22:22 by tbauer            #+#    #+#             */
+/*   Updated: 2018/10/29 20:32:43 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_sub(char *stk)
 
 int			get_next_line(int const fd, char **line)
 {
-	static char	*stk[MAX_FD];
+	static char	*stk[2147483647];
 	char		buf[BUFF_SIZE + 1];
 	int			ret;
 

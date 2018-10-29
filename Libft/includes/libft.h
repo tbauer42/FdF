@@ -6,7 +6,7 @@
 /*   By: vklaouse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 16:07:10 by vklaouse          #+#    #+#             */
-/*   Updated: 2018/10/21 15:40:20 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/29 19:53:27 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # define MAX_FD 256
-# define BUFF_SIZE 1000
+# define BUFF_SIZE 255
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
@@ -62,6 +62,7 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free(char *s1, char *s2, size_t n);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);

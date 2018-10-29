@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:21:11 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/24 18:58:57 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/29 21:01:40 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,32 @@ char	*recover_map(char *dst, t_img *pt)
 	int		fd;
 	char	*line;
 	int		i;
+	char *tmp;
+	char	*map;
 
 	pt->nb_x = 0;
 	pt->nb_y = 0;
 	fd = open(pt->av, O_RDONLY);
-	dst = NULL;
+	if(!(map = malloc(sizeof(char))))
+		return (NULL);
+	map[0] = '\0';
 	while ((i = get_next_line(fd, &line)) > 0)
 	{
-		if (dst == NULL)
-			dst = ft_strdup(line);
+		if (map == NULL)
+			map = ft_strdup(line);
 		else
-			dst = ft_strjoin(dst, line);
-		pt->nb_y++;
+		{
+			tmp = map;
+			map = ft_strjoin(tmp, line);
+			ft_strdel(&tmp);
+			pt->nb_y++;
+		}
 		free(line);
 	}
 	if (i == -1)
 		exit(1);
-	return (dst);
+	close(fd);
+	return (map);
 }
 
 int		color_trace(int **tab, int i, int j, t_img *env)
@@ -76,6 +85,9 @@ void	nb_x(t_img *pt)
 	while (tab[i])
 		i++;
 	pt->nb_x = i;
+	i = -1;
+	while(tab[++i])
+		free(tab[i]);
 	free(tab);
 	close(fd);
 }
@@ -84,6 +96,7 @@ int		**recover_coor(int fd, t_img *env)
 {
 	char	**dst;
 	char	*line;
+	int		k;
 
 	env->i = 0;
 	fd = open(env->av, O_RDONLY);
@@ -102,6 +115,11 @@ int		**recover_coor(int fd, t_img *env)
 			env->tab[env->i][env->j] = ft_atoi(dst[env->j]);
 			env->j++;
 		}
+		k = -1;
+		while(dst[++k])
+			free(dst[k]);
+		free(dst);
+		free(line);
 		env->i++;
 	}
 	close(fd);

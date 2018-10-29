@@ -6,7 +6,7 @@
 #    By: vklaouse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/06 13:25:26 by vklaouse          #+#    #+#              #
-#    Updated: 2018/10/21 15:41:42 by tbauer           ###   ########.fr        #
+#    Updated: 2018/10/29 19:47:57 by tbauer           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -24,21 +24,22 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c \
 	ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_isblank.c ft_islower.c \
-	ft_isupper.c ft_isgraph.c ft_ispunct.c get_next_line.c ft_abs.c
+	ft_isupper.c ft_isgraph.c ft_ispunct.c get_next_line.c ft_abs.c \
+	ft_strjoin_free.c
 
 OBJ = $(SRC:.c=.o)
 
 $(NAME):
-		gcc -Wall -Wextra -Werror -c $(SRC) -I ./includes
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
+		@gcc -Wall -Wextra -Werror -c $(SRC) -I ./includes
+		@ar rc $(NAME) $(OBJ)
+		@ranlib $(NAME)
 
 all: $(NAME)
 
 clean:
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 
 fclean: clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: fclean all
