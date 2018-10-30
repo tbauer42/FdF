@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:11:50 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/26 14:55:38 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 17:23:23 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 
 typedef	struct	s_img
 {
+	char	**dst;
+	int		k;
+	char	*line;
+	char	*tmp;
+	char	*map;
 	int		fd;
 	char	*str;
 	int		bol;

@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:58:49 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/29 20:42:49 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 17:08:57 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	int		maxi;
 	t_img	env;
-	char *dst;
 
 	env.str = NULL;
 	one_param(argc);

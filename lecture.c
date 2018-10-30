@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:21:11 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/29 21:01:40 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 17:24:18 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,31 @@
 
 char	*recover_map(char *dst, t_img *pt)
 {
-	int		fd;
-	char	*line;
-	int		i;
-	char *tmp;
-	char	*map;
-
 	pt->nb_x = 0;
 	pt->nb_y = 0;
-	fd = open(pt->av, O_RDONLY);
-	if(!(map = malloc(sizeof(char))))
+	pt->fd = open(pt->av, O_RDONLY);
+	if (!(pt->map = malloc(sizeof(char))))
 		return (NULL);
-	map[0] = '\0';
-	while ((i = get_next_line(fd, &line)) > 0)
+	pt->map[0] = '\0';
+	while ((pt->i = get_next_line(pt->fd, &(pt->line))) > 0)
 	{
-		if (map == NULL)
-			map = ft_strdup(line);
+		if (pt->map == NULL)
+			pt->map = ft_strdup(pt->line);
 		else
 		{
-			tmp = map;
-			map = ft_strjoin(tmp, line);
-			ft_strdel(&tmp);
+			pt->tmp = pt->map;
+			pt->map = ft_strjoin(pt->tmp, pt->line);
+			ft_strdel(&(pt->tmp));
 			pt->nb_y++;
 		}
-		free(line);
+		free(pt->line);
 	}
-	if (i == 0)
-		free(line);
-	if (i == -1)
+	if (pt->i == 0)
+		free(pt->line);
+	if (pt->i == -1)
 		exit(1);
-	close(fd);
-	return (map);
+	close(pt->fd);
+	return (pt->map);
 }
 
 int		color_trace(int **tab, int i, int j, t_img *env)
@@ -81,25 +75,22 @@ void	nb_x(t_img *pt)
 		return ;
 	get_next_line(fd, &line);
 	tab = ft_strsplit(line, ' ');
+	free(line);
 	while (get_next_line(fd, &line))
 		free(line);
+	free(line);
 	while (tab[i])
 		i++;
 	pt->nb_x = i;
 	i = -1;
-	while(tab[++i])
+	while (tab[++i])
 		free(tab[i]);
-	free(line);
 	free(tab);
 	close(fd);
 }
 
 int		**recover_coor(int fd, t_img *env)
 {
-	char	**dst;
-	char	*line;
-	int		k;
-
 	env->i = 0;
 	fd = open(env->av, O_RDONLY);
 	if (fd < 0)
@@ -108,20 +99,17 @@ int		**recover_coor(int fd, t_img *env)
 		return (NULL);
 	while (env->i < env->nb_y)
 	{
-		env->j = 0;
-		get_next_line(fd, &line);
-		dst = ft_strsplit(line, ' ');
+		env->j = -1;
+		get_next_line(fd, &(env->line));
+		env->dst = ft_strsplit(env->line, ' ');
 		env->tab[env->i] = (int*)malloc(sizeof(int) * (env->nb_x));
-		while (dst[env->j])
-		{
-			env->tab[env->i][env->j] = ft_atoi(dst[env->j]);
-			env->j++;
-		}
-		k = -1;
-		while(dst[++k])
-			free(dst[k]);
-		free(dst);
-		free(line);
+		while (env->dst[++(env->j)])
+			env->tab[env->i][env->j] = ft_atoi(env->dst[env->j]);
+		env->k = -1;
+		while (env->dst[++(env->k)])
+			free(env->dst[env->k]);
+		free(env->dst);
+		free(env->line);
 		env->i++;
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/21 17:35:26 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/29 19:23:29 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/30 17:08:48 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ void	longueur_line(t_img *env)
 	int		i;
 	int		fd;
 	char	**tab;
-	int	j;
 
 	fd = open(env->av, O_RDONLY);
 	if (fd < 0)
 		return ;
-	while ((j = get_next_line(fd, &line)) > 0)
+	while ((env->j = get_next_line(fd, &line)) > 0)
 	{
 		i = 0;
 		tab = ft_strsplit(line, ' ');
@@ -40,12 +39,12 @@ void	longueur_line(t_img *env)
 		if (i != env->nb_x)
 			exit(1);
 		i = -1;
-		while(tab[++i])
+		while (tab[++i])
 			free(tab[i]);
 		free(tab);
 		free(line);
 	}
-	if (j == 0)
+	if (env->j == 0)
 		free(line);
 	close(fd);
 }
