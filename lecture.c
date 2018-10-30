@@ -41,6 +41,8 @@ char	*recover_map(char *dst, t_img *pt)
 		}
 		free(line);
 	}
+	if (i == 0)
+		free(line);
 	if (i == -1)
 		exit(1);
 	close(fd);
@@ -81,13 +83,13 @@ void	nb_x(t_img *pt)
 	tab = ft_strsplit(line, ' ');
 	while (get_next_line(fd, &line))
 		free(line);
-	free(line);
 	while (tab[i])
 		i++;
 	pt->nb_x = i;
 	i = -1;
 	while(tab[++i])
 		free(tab[i]);
+	free(line);
 	free(tab);
 	close(fd);
 }

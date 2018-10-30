@@ -26,11 +26,12 @@ void	longueur_line(t_img *env)
 	int		i;
 	int		fd;
 	char	**tab;
+	int	j;
 
 	fd = open(env->av, O_RDONLY);
 	if (fd < 0)
 		return ;
-	while (get_next_line(fd, &line) > 0)
+	while ((j = get_next_line(fd, &line)) > 0)
 	{
 		i = 0;
 		tab = ft_strsplit(line, ' ');
@@ -44,6 +45,8 @@ void	longueur_line(t_img *env)
 		free(tab);
 		free(line);
 	}
+	if (j == 0)
+		free(line);
 	close(fd);
 }
 
