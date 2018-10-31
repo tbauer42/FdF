@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 13:58:49 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 17:08:57 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/31 16:07:22 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	env.img = mlx_new_image(env.mlx, env.img_x, env.img_y);
 	env.win = mlx_new_window(env.mlx, WINX, WINY, "FdF");
 	env.pix = mlx_get_data_addr(env.img, &env.bpp, &env.size_line, &env.endian);
-	env.str = recover_map(env.str, &env);
+	env.str = recover_map(&env);
 	only_nb(env.str);
 	nb_x(&env);
 	env.tab = recover_coor(env.fd, &env);

@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:11:50 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 17:23:23 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/31 14:01:38 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int				color_trace(int **tab, int i, int j, t_img *env);
 
 void			nb_x(t_img *env);
 
-char			*recover_map(char *dst, t_img *env);
+char			*recover_map(t_img *env);
 
 int				**recover_coor(int fd, t_img *env);
 

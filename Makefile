@@ -6,13 +6,13 @@
 #    By: tbauer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/31 17:10:45 by tbauer            #+#    #+#              #
-#    Updated: 2018/10/30 17:43:10 by tbauer           ###   ########.fr        #
+#    Updated: 2018/10/31 17:31:34 by tbauer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
-FLAGS = 
+FLAGS = -Werror -Wextra -Wall
 
 CC = gcc
 

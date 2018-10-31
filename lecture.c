@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:21:11 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/30 17:24:18 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/10/31 14:01:27 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fdf.h"
 #include <stdlib.h>
 
-char	*recover_map(char *dst, t_img *pt)
+char	*recover_map(t_img *pt)
 {
 	pt->nb_x = 0;
 	pt->nb_y = 0;
