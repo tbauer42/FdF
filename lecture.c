@@ -6,7 +6,7 @@
 /*   By: tbauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:21:11 by tbauer            #+#    #+#             */
-/*   Updated: 2018/10/31 14:01:27 by tbauer           ###   ########.fr       */
+/*   Updated: 2018/11/01 21:18:16 by tbauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int		max(t_img *env)
 		env->i++;
 	}
 	if (env->max == 0)
-		env->max = 10;
+		env->max = 95;
 	else
 		env->max += env->min;
 	return (env->max);
